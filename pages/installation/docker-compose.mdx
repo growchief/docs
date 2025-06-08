@@ -7,11 +7,15 @@ import DockerEnvvarApps from '../../components/snippets/docker-envvar-apps.mdx';
 import { Cards } from 'nextra/components';
 import Prereqs from '../../components/snippets/installation-pre-reqs.mdx';
 
+<Callout>
+Watch the Tutorial for docker-compose install: https://m.youtube.com/watch?v=A6CjAmJOWvA&t=5s
+</Callout>
+
 ## Docker Compose
 
 This guide assumes that you have docker installed, with a reasonable amount of resources to run Postiz. This Docker Compose setup has been tested with;
 
-- Virtual Machine, Ubuntu 24.04, 4Gb RAM, 2 vCPUs.
+- Virtual Machine, Ubuntu 24.04, 2Gb RAM, 2 vCPUs.
 
 <Prereqs />
 
@@ -49,6 +53,7 @@ services:
       REDIS_URL: "redis://postiz-redis:6379"
       BACKEND_INTERNAL_URL: "http://localhost:3000"
       IS_GENERAL: "true" # Required for self-hosting.
+      DISABLE_REGISTRATION: "false" # Only allow single registration, then disable signup
       # The container images are pre-configured to use /uploads for file storage.
       # You probably should not change this unless you have a really good reason!
       STORAGE_PROVIDER: "local"
