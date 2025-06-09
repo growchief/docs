@@ -15,22 +15,21 @@ Follow the instructions as availabe in the [Obtaining authorization credentials]
 
 <Steps>
 
-### Step 1 Go to Credentials Page
+## General Setup
+
+### Go to Credentials Page
 Make sure you are logged in to your Google account and visit the [Credentials - APIs & Services](https://console.cloud.google.com/projectselector2/apis/credentials) page. Make sure to read the terms and conditions and "Agree and Continue".
 
-### Step 2 Create Project
-Create a new project by clicking on the "Create Project" button.
+### Create Project
+Create a new project by clicking on the "Create Project" button. Fill in the project name, and details and click "Create".
 
-### Step 3
-Fill in the project name, and details and click "Create".
-
-### Step 4 Create OAuth Credentials
+### Create OAuth Credentials
 Create credentials by clicking on the "Create Credentials" button. Select the "OAuth client ID" option.
 
-### Step 5 Configure Consent Screen
-Make sure that your consent screen has been configured. Add yourself as a test user of the application.
+### Configure Consent Screen
+Make sure that your consent screen has been configured.
 
-### Step 6 Fill in OAuth Details
+### Fill in OAuth Details
 Create the OAuth client ID. Select "Web application" as the application type and fill in the details.
 
 <OAuth2Redirect provider = "youtube" />
@@ -39,12 +38,6 @@ Under "Authorized redirect URIs", insert your OAuth2 Redirect URI.
 
 ![YouTube](/images/providers/youtube/youtube-001.png)
 
-### Step 7 Activate YouTubes API
-Go to Activated APIs and Services. Then click on Activate APIs and Services. Search YouTube Data API v3 and activate the API by clicking it and clicking Activate.
-Do the same Process with YouTube Analytics API and YouTube Reporting API.
-
-</Steps>
-
 After following all of the steps above you should be met with a screen that shows your client ID and client secret. Add these to your providers configuration.
 
 ```env
@@ -52,22 +45,37 @@ YOUTUBE_CLIENT_ID=""
 YOUTUBE_CLIENT_SECRET=""
 ```
 
-ADDITIONAL STEPS FOR BRAND ACCOUNTS
+### Add Test User
+
+Add yourself as a test user of the application
+
+![YouTube](/images/providers/youtube/YouTube-Add-Test-Users.png)
+
+### Activate YouTube's API
+Go to "Enabled APIs and Services". Then click on "Enable APIs and Services". Search "YouTube Data API v3" and activate the API by selecting it and clicking "Enable". Do the same Process with "YouTube Analytics API" and "YouTube Reporting API".
+
+![Enabled APIs](/images/providers/youtube/YouTube-Enabled-APIs.png)
+
+![Enabled APIs](/images/providers/youtube/Enable-APIs-and-Services.png)
+
+</Steps>
+
+## ADDITIONAL STEPS FOR BRAND ACCOUNTS
 Note: When using a Brand account you will need to set your APP to External and setup a test user.
 You do not need to publish the APP, but it does take time for the changes to propagate. 
 You will also need to add the app to the trusted apps within your google workspace Admin. 
 
-### Step 1 Go to admin.google.com
-sign in
+### Go to admin.google.com
+Sign in
 
-### Step 2 go to Security --> Access and data Controls --> API Controls
+### Go to Security --> Access and data Controls --> API Controls
 Click Manage Third Party App Access
 
-### Step 3 Click Configure new App
+### Click "Configure new App"
 Put your Client ID for the app you created in previous steps into the search box and select your app
 
-### Step 4 Set scopes and Google Data Access for the app to Trusted
+### Set scopes and Google Data Access for the app to Trusted
 Once set, click save
 
-### Step 5 Wait at least 5 hours for the changes to propegate.
+### Wait at least 5 hours for the changes to propagate.
 After this time you should now be able to add your Youtube channel to your Postiz account

@@ -11,7 +11,7 @@ import OAuth2Redirect from "../../components/snippets/oauth2redirect.tsx";
 </Callout>
 
 ## Connection Options
-There are two ways to connect to an Instagram account: by using a Facebook Business or through a standalone flow that connects directly to an Instagram account. 
+There are two ways to connect to an Instagram account: by using a Facebook Business or through a standalone flow that connects directly to an Instagram account. Both methods will require a [Meta for Developpers account](https://developers.facebook.com/apps/).
 
 ## Setting up Meta Application
 
@@ -19,27 +19,28 @@ The following steps will guide you through the setup of a Meta application that 
 
 <Steps>
 ### Step 1
-Create a [new app in Instagram developers](https://developers.instagram.com/apps/creation/), choose the business you want to connect it to.<br />
-Please be advised that for public applications you would need to verify you business.
+Select a business portfolio, then create a [new app in Meta for developers](https://developers.facebook.com/apps/creation/).<br />
+Please be advised that for public applications, you will need to verify your business.
 
-![Create app](https://github.com/user-attachments/assets/e24f15a7-d9b1-48cb-8952-7a5258923b4c)
+![Business Portfolio](/images/providers/facebook/Business-Portfolio.png)
+
+![Create app](/images/providers/facebook/Create-an-app.png)
 
 ### Step 2
 Select "Other" and click next
 
-![Other](https://github.com/user-attachments/assets/9c976b82-0b73-4d1d-b3ef-cf98e4cc0c50)
+![Other app use cases](/images/providers/facebook/Other-app-use-cases.png)
 
 ### Step 3
 Then select business
 
 ![Business](https://github.com/user-attachments/assets/74bde861-5441-46bb-b5b8-c5229e980237)
 
+### Step 4
 Add all your details and click Create App
 
-### Step 4
-![CleanShot 2024-09-24 at 13 45 54](https://github.com/user-attachments/assets/f0c03825-0f9b-4467-94a4-ab8cf6ed7e1d)
+![Create an app details page](https://github.com/user-attachments/assets/f0c03825-0f9b-4467-94a4-ab8cf6ed7e1d)
 
-Set final details
 </Steps>
 
 ## Facebook Business Option
@@ -94,7 +95,7 @@ If you want to connect directly to your Instagram account without having to use 
 
 <Steps>
 ### Set up Instagram
-![Instagram](/images/providers/instagram-standalone/instagram-standalone-001.png)
+!["Add products to your app" section of app creation](/images/providers/instagram-standalone/instagram-standalone-001.png)
 
 Set up Instagram.
 
@@ -122,3 +123,33 @@ INSTAGRAM_APP_SECRET="app secret"
 
 Go to the Postiz web interface, and click on the "Add Channel" button. Select "Instagram (Standalone)" from the list of available channels. You should be redirected to the Instagram login screen to authorize the application.
 </Steps>
+
+## Adding App Roles
+
+If you're having trouble connecting to your Instagram accounts, adding them as App Roles may help.
+
+<Steps>
+### Go to the App Roles page
+
+![Facebook App developpers dashboard](/images/providers/instagram-standalone/Facebook-App-developpers-dashboard.png)
+
+### Add a role
+
+Click on "Add People"
+
+![App Roles page](/images/providers/instagram-standalone/App-Roles-page.png)
+
+### Add an Instagram Tester
+
+Select the "Instagram Tester" option, and type in the handles of all the Instagram accounts you'd like to connect to. Then, click "Add".
+
+![Add people window](/images/providers/instagram-standalone/Add-people-window.png)
+
+### Accept the invitations
+
+Go to your Instagram account, and accept the tester invitation in the [Apps and Websites section of the profile settings](https://www.instagram.com/accounts/manage_access/).
+
+![Apps and Websites section of the profile settings](/images/providers/instagram-standalone/Apps-and-Websites-section-of-the-profile-settings.png)
+
+</Steps>
+
