@@ -7,7 +7,7 @@ import {Steps, Callout} from "nextra/components";
 import OAuth2Redirect from "../../components/snippets/oauth2redirect.tsx";
 
 <Callout>
-This integration requires that you have setup a Facebook developer account already. You can start by going to the [Meta/Facebook Developer Portal](https://developers.facebook.com/apps).
+This integration requires that you have setup a Meta for Developers account already. You can start by going to the [Meta/Facebook Developer Portal](https://developers.facebook.com/apps).
 
 This is a complex integration, and it may take some time to get it right. If you have any issues, please reach out to us on the Postiz Discord. This documentation is not fully complete, because at the time of writing the Threads API seems like it's having issues. This page was written to get something up to get you started.
 </Callout>
@@ -15,7 +15,7 @@ This is a complex integration, and it may take some time to get it right. If you
 <Steps>
 ### Create an app
 
-Give your app a name and email.
+Go to Meta for Developers and [create a new app](https://developers.facebook.com/apps/creation/). Give your app a name and email.
 
 ![Create app](./threads_app_name.png)
 
@@ -29,7 +29,7 @@ Select *Access the Threads API*.
 
 ![Add business details](./threads_business.png)
 
-If you're unable to skip and move to the next step, and get a message saying "There are no business portfolios available to connect to this app", go to your [Meta Business Suite Settings](https://business.facebook.com/latest/settings/business_users) and make sure you've enabled Two-Factor Authentication (2FA) for your account.
+If you're unable to skip or move to the next step, and get a message saying "There are no business portfolios available to connect to this app", go to your [Meta Business Suite Settings](https://business.facebook.com/latest/settings/business_users) and make sure you've enabled Two-Factor Authentication (2FA) for your account.
 
 ### Finish creating the app
 
@@ -73,7 +73,7 @@ You should not try to add a Threads account to Postiz at this time.
 ### Allow the app on your threads account
 
 * On threads.com, open your [account settings](https://www.threads.net/settings/account);
-* Open [Website permissions](https://www.threads.com/settings/website_permissions), and switch to the *Invitates* tab;
+* Open [Website permissions](https://www.threads.com/settings/website_permissions), and switch to the "Invites" tab;
 * If all has gone well, you should have a pending invite. Accept that invite.
 
 ![Threads invite](./threads_invite.png)
