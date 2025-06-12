@@ -9,14 +9,17 @@ import OAuth2Redirect from "../../components/snippets/oauth2redirect.tsx";
 <Callout>
 This integration requires that you have **Manage Server** permissions on the Discord server you want to integrate with.
 </Callout>
-<Callout>
-This integration currently requires an Icon on the Discord Side.
-</Callout> 
 
 <Steps>
 ### Create a Discord Application
 Login to Discord on the web, and then go to the [Discord Developer Portal](https://discord.com/developers/applications) and click on "New Application".
 ![New Application](./discord_create_app.png)
+
+### Add an App Icon
+
+![App Icon](./discord_add_app_icon.png)
+
+Upload the App Icon of your choice (1024x1024px max) and save your changes. If you do not do this, you will get 404 errors in logs when trying to add the Discord channel in the Postiz web interface.
 
 ### Get and set your **Client ID** and **Client Secret** to a safe place.
 
