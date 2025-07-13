@@ -203,49 +203,6 @@ Payload:
 | value | string | Yes | Tag value |
 | label | string | Yes | Tag label |
 
-### Settings
-| Provider | Type | Required | Description |
-| --- | --- | --- | --- |
-| devto | DevToSettingsDto | No | Dev.to settings |
-| medium | MediumSettingsDto | No | Medium settings |
-| hashnode | HashnodeSettingsDto | No | Hashnode settings |
-| reddit | RedditSettingsDto | No | Reddit settings |
-| lemmy | LemmySettingsDto | No | Lemmy settings |
-| youtube | YoutubeSettingsDto | No | Youtube settings |
-| pinterest | PinterestSettingsDto | No | Pinterest settings |
-| dribbble | DribbbleDto | No | Dribbble settings |
-| tiktok | TikTokDto | No | TikTok settings |
-| discord | DiscordDto | No | Discord settings |
-| slack | SlackDto | No | Slack settings |
-
-### DevToSettingsDto
-| Property     | Type                                   | Description                                                                                                                                                                                             | Required |
-|--------------|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| `title`      | `string`                               | The title of the Dev.to post.                                                                                                                                                                            | Yes      |
-| `main_image` | `MediaDto`                             | Optional main image for the Dev.to post. Refers to the `MediaDto` type.                                                                                                                                 | No       |
-| `canonical`  | `string` (URL)                         | Optional canonical URL for the Dev.to post.                                                                                                                                                             | No       |
-| `organization`| `string`                               | Optional organization associated with the post.                                                                                                                                                         | No       |
-| `tags`       | `DevToTagsSettingsDto[]` (Array of up to 4) | Optional array of tags for the Dev.to post. Each item in the array is of type `DevToTagsSettingsDto`. The array can have a maximum of 4 items. | No       |
-
-### MediumSettingsDto
-| Property     | Type                         | Description                                                                                                                                                                                             | Required |
-|--------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| `title`      | `string`                     | The title of the Medium post.                                                                                                                                                                           | Yes      |
-| `subtitle`   | `string`                     | The subtitle of the Medium post.                                                                                                                                                                        | Yes      |
-| `canonical`  | `string` (URL)               | Optional canonical URL for the Medium post.                                                                                                                                                            | No       |
-| `publication`| `string`                     | Optional publication associated with the post.                                                                                                                                                        | No       |
-| `tags`       | `MediumTagsSettings[]` (Array of up to 4) | Optional array of tags for the Medium post. Each item in the array is of type `MediumTagsSettings`. The array can have a maximum of 4 items. | No       |
-
-### HashnodeSettingsDto
-| Property     | Type                          | Description                                                                                                                                                                                                 | Required |
-|--------------|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| `title`      | `string`                      | The title of the Hashnode post.                                                                                                                                                                             | Yes      |
-| `subtitle`   | `string`                      | The optional subtitle of the Hashnode post.                                                                                                                                                                 | No       |
-| `main_image` | `MediaDto`                    | Optional main image for the Hashnode post. Refers to the `MediaDto` type.                                                                                                                                     | No       |
-| `canonical`  | `string` (URL)                | Optional canonical URL for the Hashnode post.                                                                                                                                                             | No       |
-| `publication`| `string`                      | The slug of the Hashnode publication to post to.                                                                                                                                                            | Yes      |
-| `tags`       | `HashnodeTagsSettings[]` (Array with at least 1 item) | An array of tags for the Hashnode post. Each item in the array is of type `HashnodeTagsSettings`. The array must contain at least one tag. | Yes      |
-
 
 curl:
 ```
