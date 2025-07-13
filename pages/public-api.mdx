@@ -164,6 +164,12 @@ Payload:
 }
 ```
 
+Response:
+
+```json
+[{"postId":"POST_ID","integration":"INTEGRATION_ID"}]
+```
+
 <iframe style={{width: "100%", height: "680px", zoom: 0.8}} src="https://platform.postiz.com/modal/dark/all"></iframe>
 
 ### Request
@@ -203,51 +209,6 @@ Payload:
 | value | string | Yes | Tag value |
 | label | string | Yes | Tag label |
 
-
-curl:
-```
-curl -X POST \
-  https://POSTIZ_URL/public/v1/posts \
-  -H 'Authorization: API_KEY' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "type": "draft",
-  "order": "",
-  "shortLink": true,
-  "inter": 0,
-  "date": "2025-05-07T12:00:00.000Z",
-  "tags": [
-    {
-      "value": "",
-      "label": ""
-    }
-  ],
-  "posts": [
-    {
-      "integration": {
-        "id": "INTEGRATION_ID"
-      },
-      "value": [
-        {
-          "content": "content",
-          "id": "",
-          "image": []
-        }
-      ],
-      "group": "",
-      "settings": {}
-    }
-  ]
-}'
-```
-
-Response:
-
-```json
-[{"postId":"POST_ID","integration":"INTEGRATION_ID"}]
-```
-
----
 
 <br />
 ### Delete a post
