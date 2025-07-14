@@ -225,3 +225,34 @@ Response:
   "id": "e639003b-f727-4a1e-87bd-74a2c48ae41e"
 }
 ```
+
+## NEW! (Generate videos with AI)
+
+```http
+POST https://api.postiz.com/public/v1/generate-video
+```
+
+### Payload (Slides of images)
+```json
+{
+  "type": "image-text-slides",
+  "output": "vertical|horizontal",
+  "customParams": {
+    "voice": "elevenlabs voice id",
+    "prompt": "description of the video"
+  }
+}
+```
+
+### Payload (VEO3 fast video) - Subscribed users after trial
+```json
+{
+  "type": "veo3",
+  "output": "vertical|horizontal",
+  "customParams": {
+    "voice": "",
+    // images - optional (Maximum 3 images)
+    "images": [{"id": "string", "path": "string"}]
+  }
+}
+```
