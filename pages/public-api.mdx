@@ -226,10 +226,21 @@ Response:
 }
 ```
 
+---
+
 ## NEW! (Generate videos with AI)
 
+Request:
 ```http
 POST https://api.postiz.com/public/v1/generate-video
+```
+
+Response:
+```json
+[{
+  "id": "string",
+  "path": "URL of the generated video"
+}]
 ```
 
 ### Payload (Slides of images)
@@ -244,13 +255,30 @@ POST https://api.postiz.com/public/v1/generate-video
 }
 ```
 
+Get voices
+```http
+POST https://api.postiz.com/public/v1/video/image-text-slides/loadVoices
+```
+
+Response
+```json
+{
+  "voices": [
+    {
+      "id": "string",
+      "name": "string"
+    }
+  ]
+}
+```
+
 ### Payload (VEO3 fast video) - Subscribed users after trial
 ```json
 {
   "type": "veo3",
   "output": "vertical|horizontal",
   "customParams": {
-    "voice": "",
+    "prompt": "",
     // images - optional (Maximum 3 images)
     "images": [{"id": "string", "path": "string"}]
   }
