@@ -257,7 +257,15 @@ Response:
 
 Get voices
 ```http
-POST https://api.postiz.com/public/v1/video/image-text-slides/loadVoices
+POST https://api.postiz.com/public/v1/video/function
+```
+
+Payload
+```json
+{
+  "functionName": "loadVoices",
+  "identifier": "image-text-slides"
+}
 ```
 
 Response
