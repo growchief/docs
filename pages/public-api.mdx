@@ -87,19 +87,14 @@ Response:
 GET https://api.postiz.com/public/v1/posts
 ```
 
-Query:
-| Name | Type | Value |
-| --- | --- | --- |
-| display | string | day \| week \| month |
-| day | number | 0-6 |
-| week | number | 1-52 |
-| month | number | 1-12 |
-| year | number | 2022+ |
-
-** day is required if display is day<br />
-** week is required if display is week or day<br />
-** month is required if display is month or week<br />
-** year is required<br /><br />
+Payload
+```json
+{
+  "startDate": "UTC date in ISO format - ex. 2024-12-14T08:18:54.274Z",
+  "endDate": "UTC date in ISO format - ex. 2024-12-14T08:18:54.274Z",
+  "customer"?: "optional customer id for filtering"
+}
+```
 
 Response:
 
