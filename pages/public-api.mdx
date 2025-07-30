@@ -27,7 +27,9 @@ Here are the following API endpoints you can use:
 
 <br />
 
-### Get all added integrations
+> NOTE: The UI representation is a `channel`, but on the API it is called `integration`. So when you see `integration` in the API, it means a `channel`.
+
+### Get all added channels
 
 ```http
 GET https://api.postiz.com/public/v1/integrations
@@ -136,7 +138,7 @@ Payload:
   "posts": [
     {
       "integration": {
-        "id": "asdfsad23rwdfasfsddc"
+        "id": "asdfsad23rwdfasfsddc" // your channel id
       },
       "value": [
         {
@@ -152,7 +154,7 @@ Payload:
       ],
       "group": "uniqueId for all the posts in the same group",
       "settings": {
-        "[key]": "check each integration DTOs in the files, or wait for the error on a new request"
+        "[key]": "check each channel DTOs in the files, or wait for the error on a new request"
       }
     }
   ]
