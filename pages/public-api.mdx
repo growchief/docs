@@ -99,21 +99,14 @@ Response:
 GET https://api.postiz.com/public/v1/posts?startDate=2024-12-14T08:18:54.274Z&endDate=2024-12-14T08:18:54.274Z&customer=optionalCustomerId
 ```
 
+Query Parameters:
+
 | Property  | Type     | Required | Description            |
 | --------- | -------- | -------- | ---------------------- |
 | startDate | `string` | Yes      | UTC date in ISO format |
 | endDate   | `string` | Yes      | UTC date in ISO format |
 | customer  | `string` | No       | Customer ID            |
 
-Payload
-
-```json
-{
-  "startDate": "UTC date in ISO format - ex. 2024-12-14T08:18:54.274Z",
-  "endDate": "UTC date in ISO format - ex. 2024-12-14T08:18:54.274Z",
-  "customer"?: "optional customer id for filtering"
-}
-```
 
 Response:
 
