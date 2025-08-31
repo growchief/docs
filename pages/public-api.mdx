@@ -1,27 +1,27 @@
 ---
 title: Public API
-description: "How to use Postiz public API"
+description: "How to use GrowChief public API"
 ---
 
 import { Callout } from "nextra/components";
 
 <Callout type="warning">
   **Warning:** This Feature is currently in Beta and is in active-development.
-  It does **not** provide all of the Postiz Features currently.
+  It does **not** provide all of the GrowChief Features currently.
 </Callout>
 
 ## For NodeJS / N8N users
 
-You can use the <a href="https://www.npmjs.com/package/@postiz/node" target="_blank">Postiz NodeJS SDK</a> to interact with the Postiz Public API.<br />
+You can use the <a href="https://www.npmjs.com/package/@growchief/node" target="_blank">GrowChief NodeJS SDK</a> to interact with the GrowChief Public API.<br />
 
-For a custom n8n node check <a href="https://www.npmjs.com/package/n8n-nodes-postiz" target="_blank">Postiz n8n custom node</a><br />
+For a custom n8n node check <a href="https://www.npmjs.com/package/n8n-nodes-growchief" target="_blank">GrowChief n8n custom node</a><br />
 
-## Public API allows you to work with Postiz in headless mode
+## Public API allows you to work with GrowChief in headless mode
 
-To use the Public API, go to Postiz settings and copy the API Key.<br />
+To use the Public API, go to GrowChief settings and copy the API Key.<br />
 With each request you need to pass the API Key in the header `Authorization: {apiKey}`.<br />
-If you are using the hosted version of Postiz the URL will be `https://api.postiz.com/public/v1`.<br />
-If you are self-hosting Postiz the URL will be `https://{NEXT_PUBLIC_BACKEND_URL}/public/v1`.<br />
+If you are using the hosted version of GrowChief the URL will be `https://api.growchief.com/public/v1`.<br />
+If you are self-hosting GrowChief the URL will be `https://{NEXT_PUBLIC_BACKEND_URL}/public/v1`.<br />
 
 <u>There is a limit of **30** requests per hour.</u><br />
 It does not mean you can post only 30 posts per hour, it means you can make 30 <br />
@@ -42,7 +42,7 @@ Here are the following API endpoints you can use:
 ### Get all added channels
 
 ```http
-GET https://api.postiz.com/public/v1/integrations
+GET https://api.growchief.com/public/v1/integrations
 ```
 
 Response:
@@ -53,7 +53,7 @@ Response:
     "id": "asdfasf2342dsaxfcsf",
     "name": "Nevo David",
     "identifier": "facebook",
-    "picture": "https://upload.postiz.com/picture.png",
+    "picture": "https://upload.growchief.com/picture.png",
     "disabled": false,
     "profile": "nevo_david",
     "customer": {
@@ -71,7 +71,7 @@ Response:
 ### Upload a new file (from-data)
 
 ```http
-POST https://api.postiz.com/public/v1/upload
+POST https://api.growchief.com/public/v1/upload
 ```
 
 Payload:
@@ -96,7 +96,7 @@ Response:
 ### Post list
 
 ```http
-GET https://api.postiz.com/public/v1/posts?startDate=2024-12-14T08:18:54.274Z&endDate=2024-12-14T08:18:54.274Z&customer=optionalCustomerId
+GET https://api.growchief.com/public/v1/posts?startDate=2024-12-14T08:18:54.274Z&endDate=2024-12-14T08:18:54.274Z&customer=optionalCustomerId
 ```
 
 Query Parameters:
@@ -136,7 +136,7 @@ Response:
 ### Create / update a post
 
 ```http
-POST https://api.postiz.com/public/v1/posts
+POST https://api.growchief.com/public/v1/posts
 ```
 
 Payload:
@@ -179,7 +179,7 @@ Response:
 
 <iframe
   style={{ width: "100%", height: "680px", zoom: 0.8 }}
-  src="https://platform.postiz.com/modal/dark/all"
+  src="https://platform.growchief.com/modal/dark/all"
 ></iframe>
 
 For self-hosting, you can access the modal code generator at:
@@ -233,7 +233,7 @@ http://localhost:5000/modal/dark/all
 ### Delete a post
 
 ```http
-DELETE https://api.postiz.com/public/v1/posts/:id
+DELETE https://api.growchief.com/public/v1/posts/:id
 ```
 
 Response:
@@ -251,7 +251,7 @@ Response:
 Request:
 
 ```http
-POST https://api.postiz.com/public/v1/generate-video
+POST https://api.growchief.com/public/v1/generate-video
 ```
 
 Response:
@@ -281,7 +281,7 @@ Response:
 Get voices
 
 ```http
-POST https://api.postiz.com/public/v1/video/function
+POST https://api.growchief.com/public/v1/video/function
 ```
 
 Payload
