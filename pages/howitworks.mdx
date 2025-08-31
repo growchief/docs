@@ -5,7 +5,7 @@ description: 'Learn the architecture of the project'
 
 ## Architecture
 
-GrowChief is composed of 4 main services and 3 external services - all 4 of the main services typically run within a **single docker container**, and talk to each other through HTTP. Those 4 main servers typically talk to other containers, running the external services - the SQL Database, Redis Queue and Storage.
+GrowChief is composed of 3 main services and 2 external services - all 5 of the main services typically run within a **single docker container**, and talk to each other through HTTP. Those 4 main servers typically talk to other containers, running the external services - the SQL Database, Redis Queue and Storage.
 
 ```mermaid
 flowchart LR;
@@ -14,58 +14,33 @@ flowchart LR;
 
     frontend[Frontend Service]:::svc
     backend[Backend Service]:::svc
-    cron[Cron Service]:::svc
-    workers[Worker Service]:::svc
-    redis[Redis Queue]:::ext
-    db[SQL Database]:::ext
-    storage[Storage]:::ext
+    orchestrator[Temporal Worker]:::svc
+    temporal[Temporal Service]:::ext
+    postgres[Postgres Database]:::ext
 
 	frontend --> backend
-    backend --> db
-    backend --> redis
-    cron <--> redis
-    workers --> storage
-    workers --> db
-    redis --> workers
-    backend --> storage
-
+    backend --> postgres
+    backend --> temporal
+    orchestrator --> temporal
+    orchestrator --> postgres
 ```
 
 
 - [Frontend](#frontend) - Provides the Web user interface, talks to the Backend.
 - [Backend](#backend) - Does all the real work, provides an API for the frontend, and posts work to the redis queue.
-- [Workers](#worker) - Consumes work from the Redis Queue.
-- [Cron](#cron) - Run jobs at scheduled times.
+- [Workers](#worker) - Consumes work from the Temporal Service.
 
-- [Redis Queue](#redis) - A simple queue for the workers to consume work from.
+- [Temporal Service](#temporal) - A simple queue for the workers to consume work from.
 - [SQL Database](#db) - Stores all the data, Postgres is typically used, but any SQL database can be used.
-- [Storage](#storage) - Stores all the files, this used to be CloudFlare R2 as the default, but now it's just a local file system.
 
 ### Frontend
 
-The frontend is the part that you see, the web interface.
-
-It relies on the backend to:
-
-- Schedule posts
-- Show analytics
-- Manage users
+The frontend is the part that you see, the web interface make with React Vite.
 
 ### Backend
 
 The backend is the "brain" of GrowChief, and coordinates all the work. Typically the SQL database it talks to is Postgres, but other databases can be used.
 
-### Cron
-
-The cron service does the following;
-
-- Refresh tokens from different social media platforms.
-- Check for trending change every hour and inform users about it.
-- Sync the amount of stars for every repository at the end of the day.
-
 ### Worker
 
-The worker services does the following;
-
-- Post scheduled posts to social media platforms.
-- Perform multiple jobs coming from the cron.
+The worker process the queue and automate your social media accounts.

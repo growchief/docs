@@ -3,46 +3,25 @@ title: Public API
 description: "How to use GrowChief public API"
 ---
 
-import { Callout } from "nextra/components";
-
-<Callout type="warning">
-  **Warning:** This Feature is currently in Beta and is in active-development.
-  It does **not** provide all of the GrowChief Features currently.
-</Callout>
-
 ## For NodeJS / N8N users
-
-You can use the <a href="https://www.npmjs.com/package/@growchief/node" target="_blank">GrowChief NodeJS SDK</a> to interact with the GrowChief Public API.<br />
 
 For a custom n8n node check <a href="https://www.npmjs.com/package/n8n-nodes-growchief" target="_blank">GrowChief n8n custom node</a><br />
 
-## Public API allows you to work with GrowChief in headless mode
+## Public API allows you to work with GrowChief
 
 To use the Public API, go to GrowChief settings and copy the API Key.<br />
 With each request you need to pass the API Key in the header `Authorization: {apiKey}`.<br />
-If you are using the hosted version of GrowChief the URL will be `https://api.growchief.com/public/v1`.<br />
-If you are self-hosting GrowChief the URL will be `https://{NEXT_PUBLIC_BACKEND_URL}/public/v1`.<br />
-
-<u>There is a limit of **30** requests per hour.</u><br />
-It does not mean you can post only 30 posts per hour, it means you can make 30 <br />
-requests to the API per hour. If you plan ahead, you can have a lot more every
-hour.
-
-<br />
-
-<strong>
-  NOTE: The UI representation is a `channel`, but on the API it is called
-  `integration`. So when you see `integration` in the API, it means a `channel`.
-</strong>
+If you are using the hosted version of GrowChief the URL will be `https://api.growchief.com/public`.<br />
+If you are self-hosting GrowChief the URL will be `https://{NEXT_PUBLIC_BACKEND_URL}/api/public`.<br />
 
 <br />
 
 Here are the following API endpoints you can use:
 
-### Get all added channels
+### Get all workflows
 
 ```http
-GET https://api.growchief.com/public/v1/integrations
+GET https://api.growchief.com/public/workflows
 ```
 
 Response:
@@ -50,16 +29,13 @@ Response:
 ```json
 [
   {
-    "id": "asdfasf2342dsaxfcsf",
-    "name": "Nevo David",
-    "identifier": "facebook",
-    "picture": "https://upload.growchief.com/picture.png",
-    "disabled": false,
-    "profile": "nevo_david",
-    "customer": {
-      "id": "asdfasf2342dsaxfcsfsadfsadf",
-      "name": "My Customer"
-    }
+    "id": "fbff241-607c-4432-b76d-bdc7bccd5fc3",
+    "name": "New Workflow",
+    "organizationId": "1b5ca8a2-c71e-4887-8e43-1ddcbca2f1f9",
+    "active": true,
+    "createdAt": "2025-08-19T07:27:13.902Z",
+    "updatedAt": "2025-08-26T09:54:34.720Z",
+    "deletedAt": null
   }
 ]
 ```
@@ -68,254 +44,52 @@ Response:
 
 <br />
 
-### Upload a new file (from-data)
+### Add lead to a workflow
 
 ```http
-POST https://api.growchief.com/public/v1/upload
+POST https://api.growchief.com/public/workflows/:id
 ```
+Params:
+`id` - workflow id you want to add the lead to (get it from the previous endpoint)
 
-Payload:
-`file` - File
 
-Response:
+Payload can work can have multiple options: <br />
+
+<strong>Direct URL (100% success):</strong>
 
 ```json
 {
-  "id": "e639003b-f727-4a1e-87bd-74a2c48ae41e",
-  "name": "vXJYn8EzSB.png",
-  "path": "https://uploads.gitroom.com/vXJYn8EzSB.png",
-  "organizationId": "85460a39-6329-4cf4-a252-187ce89a3480",
-  "createdAt": "2024-12-14T08:18:54.274Z",
-  "updatedAt": "2024-12-14T08:18:54.274Z"
+  "urls": ["https://www.linkedin.com/in/nevo-david"]
 }
 ```
 
----
-
-<br />
-### Post list
-
-```http
-GET https://api.growchief.com/public/v1/posts?startDate=2024-12-14T08:18:54.274Z&endDate=2024-12-14T08:18:54.274Z&customer=optionalCustomerId
-```
-
-Query Parameters:
-
-| Property  | Type     | Required | Description            |
-| --------- | -------- | -------- | ---------------------- |
-| startDate | `string` | Yes      | UTC date in ISO format |
-| endDate   | `string` | Yes      | UTC date in ISO format |
-| customer  | `string` | No       | Customer ID            |
-
-
-Response:
+<br /><br />
+<strong>Organization Name, First Name, Last Name</strong>
 
 ```json
 {
-  "posts": [
-    {
-      "id": "cm4gklk8o00008copo77fa0f8",
-      "content": "blabla",
-      "publishDate": "2024-12-09T05:06:00.000Z",
-      "releaseURL": "https://twitter.com/nevodavid/status/1865986385708204316",
-      "state": "QUEUE|PUBLISHED|ERROR|DRAFT",
-      "integration": {
-        "id": "cm4ean69r0003w8w1cdomox9n",
-        "providerIdentifier": "x",
-        "name": "Nevo David",
-        "picture": "https://uploads.gitroom.com/5g9mEIVCAq.jpeg"
-      }
-    }
-  ]
+  "organization_name": "GrowChief",
+  "firstName": "Nevo",
+  "lastName": "David"
 }
 ```
-
----
-
-<br />
-### Create / update a post
-
-```http
-POST https://api.growchief.com/public/v1/posts
-```
-
-Payload:
+<br /><br />
+<strong>Email</strong>
 
 ```json
 {
-  "type": "draft|schedule|now",
-  "date": "2024-12-14T08:18:54.274Z",
-  "posts": [
-    {
-      "integration": {
-        "id": "asdfsad23rwdfasfsddc" // your channel id
-      },
-      "value": [
-        {
-          "content": "This is my cool post",
-          "id": "Only if you want to edit an existing post",
-          "image": [
-            {
-              "id": "string",
-              "path": "string"
-            }
-          ]
-        }
-      ],
-      "group": "uniqueId for all the posts in the same group",
-      "settings": {
-        "[key]": "check each channel DTOs in the files, or wait for the error on a new request"
-      }
-    }
-  ]
+  "email": "nevo@growchief.com"
 }
 ```
 
-Response:
-
-```json
-[{ "postId": "POST_ID", "integration": "INTEGRATION_ID" }]
-```
-
-<iframe
-  style={{ width: "100%", height: "680px", zoom: 0.8 }}
-  src="https://platform.growchief.com/modal/dark/all"
-></iframe>
-
-For self-hosting, you can access the modal code generator at:
-http://localhost:5000/modal/dark/all
-
-### Request
-
-| Property  | Type                           | Required                  | Description               |
-| --------- | ------------------------------ | ------------------------- | ------------------------- |
-| type      | `draft` \| `schedule` \| `now` | Yes                       | Type of post creation     |
-| order     | string                         | No                        | Order of posts            |
-| shortLink | boolean                        | Yes                       | Whether to use short link |
-| inter     | number                         | No                        | Interval                  |
-| date      | string (Date)                  | Yes                       | Date of post              |
-| tags      | Tags[]                         | Yes                       | Array of tags             |
-| posts     | Post[]                         | Yes (if type !== 'draft') | Array of posts            |
-
-### Posts
-
-| Property    | Type                 | Required | Description            |
-| ----------- | -------------------- | -------- | ---------------------- |
-| integration | Integration          | Yes      | Integration details    |
-| value       | PostContent[]        | Yes      | Array of post content  |
-| group       | string               | No       | Group name             |
-| settings    | AllProvidersSettings | No       | Settings for providers |
-
-### Post Value
-
-| Property | Type       | Required | Description    |
-| -------- | ---------- | -------- | -------------- |
-| content  | string     | Yes      | Post content   |
-| id       | string     | No       | Post ID        |
-| image    | MediaDto[] | No       | Array of media |
-
-### Integration
-
-| Property | Type   | Required | Description    |
-| -------- | ------ | -------- | -------------- |
-| id       | string | Yes      | Integration ID |
-
-### Tags
-
-| Property | Type   | Required | Description |
-| -------- | ------ | -------- | ----------- |
-| value    | string | Yes      | Tag value   |
-| label    | string | Yes      | Tag label   |
-
----
-
-<br />
-### Delete a post
-
-```http
-DELETE https://api.growchief.com/public/v1/posts/:id
-```
-
-Response:
-
-```json
-{
-  "id": "e639003b-f727-4a1e-87bd-74a2c48ae41e"
-}
-```
-
----
-
-## NEW! (Generate videos with AI)
-
-Request:
-
-```http
-POST https://api.growchief.com/public/v1/generate-video
-```
-
-Response:
+<br /><br />
+<strong>Response:</strong>
 
 ```json
 [
   {
-    "id": "string",
-    "path": "URL of the generated video"
+    "status": "success",
+    "message": "Workflow started successfully"
   }
 ]
-```
-
-### Payload (Slides of images)
-
-```json
-{
-  "type": "image-text-slides",
-  "output": "vertical|horizontal",
-  "customParams": {
-    "voice": "elevenlabs voice id",
-    "prompt": "description of the video"
-  }
-}
-```
-
-Get voices
-
-```http
-POST https://api.growchief.com/public/v1/video/function
-```
-
-Payload
-
-```json
-{
-  "functionName": "loadVoices",
-  "identifier": "image-text-slides"
-}
-```
-
-Response
-
-```json
-{
-  "voices": [
-    {
-      "id": "string",
-      "name": "string"
-    }
-  ]
-}
-```
-
-### Payload (VEO3 fast video) - Subscribed users after trial
-
-```json
-{
-  "type": "veo3",
-  "output": "vertical|horizontal",
-  "customParams": {
-    "prompt": "",
-    // images - optional (Maximum 3 images)
-    "images": [{ "id": "string", "path": "string" }]
-  }
-}
 ```

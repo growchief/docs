@@ -4,14 +4,37 @@ slug: '/quickstart'
 order: 1
 ---
 
-## Self Hosted installation options
+## Requirements
 
-You can choose between the following installation options;
+Before installing Growchief, ensure you have the following:
+- Docker and Docker Compose ([Installation guide](https://docs.docker.com/engine/install/))
+- Git
+- The following ports available: 5002, 8080
 
-* [Docker Compose](/installation/docker-compose) - Recommended option for **users**.
-* [Development](/installation/development) - Recommended option for **developers**.
+## Setup
 
-## Advanced installation options
+### 1. Clone the Repository
 
-* [Docker (standalone)](/installation/docker) - Run from the command line with Docker.
-* [Helm](/installation/kubernetes-helm) - Run with Kubernetes + Helm.
+Run the following command to clone the repository:
+```
+git clone https://github.com/growchief/growchief.git
+```
+
+### 2. Configure the Auth Secret
+
+Open `docker-compose.yml` and set the `AUTH_SECRET` value to a secure, random string.
+
+## First Start-Up
+
+To launch Growchief, run:
+```
+docker compose up -d
+```
+
+Wait a few moments for all services to start.
+
+Once running, open your browser and go to:
+[http://localhost:5002](http://localhost:5002)
+
+You’re all set!
+Growchief is ready to use!
