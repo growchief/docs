@@ -53,12 +53,12 @@ const themeConfig: DocsThemeConfig = {
     </div>
   ),
   project: {
-    link: "https://github.com/gitroomhq/growchief-app",
+    link: "https://github.com/growchief/app",
   },
   chat: {
     link: "https://discord.growchief.com",
   },
-  docsRepositoryBase: "https://github.com/gitroomhq/growchief-docs/blob/main",
+  docsRepositoryBase: "https://github.com/growchief/docs/blob/main",
   footer: {
     content: "Gitroom Limited. All rights reserved.",
   },
